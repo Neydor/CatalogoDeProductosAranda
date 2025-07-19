@@ -63,9 +63,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CatalogoDeProductosAranda\CatalogoDeProductosAranda.csproj">
+    <ProjectReference Include="..\CatalogoDeProductosAranda\Aranda.Productos.Api.csproj">
       <Project>{CBC65038-5184-44F5-91DF-8509CF9ACFC3}</Project>
-      <Name>CatalogoDeProductosAranda</Name>
+      <Name>Aranda.Productos.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
