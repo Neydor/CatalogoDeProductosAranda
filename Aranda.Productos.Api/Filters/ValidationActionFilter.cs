@@ -56,7 +56,6 @@ namespace Aranda.Productos.Api.Filters
                     }
                     catch (ResolutionFailedException)
                     {
-                        // No validator registered for this type, continue
                         continue;
                     }
                 }

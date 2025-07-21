@@ -27,7 +27,6 @@ namespace Aranda.Productos.Api.App_Start
 
             container.RegisterType<IProductService, ProductService>();
 
-            // Register FluentValidation validators
             container.RegisterType<IValidator<CreateProductDto>, CreateProductValidator>();
             container.RegisterType<IValidator<UpdateProductDto>, UpdateProductValidator>();
 

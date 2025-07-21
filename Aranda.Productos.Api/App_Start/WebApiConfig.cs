@@ -26,7 +26,6 @@ namespace Aranda.Productos.Api
 
         public static void RegisterWithContainer(HttpConfiguration config, IUnityContainer container)
         {
-            // Register validation filter globally
             config.Filters.Add(new ValidationActionFilter(container));
         }
     }
