@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Results;
 
-namespace CatalogoDeProductosAranda.Handler
+namespace Aranda.Productos.Api.Handler
 {
     public class GlobalExceptionHandler : ExceptionHandler
     {

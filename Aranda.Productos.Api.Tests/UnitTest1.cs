@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace CatalogoDeProductosAranda.Tests
+namespace Aranda.Productos.Api.Tests
 {
     [TestClass]
     public class UnitTest1

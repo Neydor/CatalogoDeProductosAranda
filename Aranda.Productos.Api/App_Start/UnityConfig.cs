@@ -4,12 +4,16 @@ using Aranda.Productos.Domain.Interfaces;
 using Aranda.Productos.Infrastructure.Persistence;
 using Aranda.Productos.Infrastructure.Repositories;
 using AutoMapper;
+using System.Reflection;
 using System.Web.Http;
 using Unity;
 using Unity.AspNet.WebApi;
 using Unity.Lifetime;
+using FluentValidation;
+using Aranda.Productos.Application.Validators;
+using Aranda.Productos.Application.DTOs;
 
-namespace CatalogoDeProductosAranda.App_Start
+namespace Aranda.Productos.Api.App_Start
 {
     public static class UnityConfig
     {
@@ -17,16 +21,16 @@ namespace CatalogoDeProductosAranda.App_Start
         {
             var container = new UnityContainer();
 
-            // Register DbContext with a HierarchicalLifetimeManager to ensure one context per HTTP request.
             container.RegisterType<ApplicationDbContext>(new HierarchicalLifetimeManager());
 
-            // Register Unit of Work with a HierarchicalLifetimeManager.
             container.RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());
 
-            // Register Application Services
             container.RegisterType<IProductService, ProductService>();
 
-            // Configure and register AutoMapper
+            // Register FluentValidation validators
+            container.RegisterType<IValidator<CreateProductDto>, CreateProductValidator>();
+            container.RegisterType<IValidator<UpdateProductDto>, UpdateProductValidator>();
+
             var mapperConfig = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<Aranda.Productos.Application.Mappers.MappingProfile>();

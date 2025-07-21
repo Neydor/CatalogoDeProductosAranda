@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
-using CatalogoDeProductosAranda.App_Start;
+using Aranda.Productos.Api.App_Start;
 
-namespace CatalogoDeProductosAranda
+namespace Aranda.Productos.Api
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

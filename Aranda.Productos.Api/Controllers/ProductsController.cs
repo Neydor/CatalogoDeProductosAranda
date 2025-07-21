@@ -7,7 +7,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace CatalogoDeProductosAranda.Controllers
+namespace Aranda.Productos.Api.Controllers
 {
     [RoutePrefix("api/products")]
     public class ProductsController : ApiController
@@ -25,12 +25,11 @@ namespace CatalogoDeProductosAranda.Controllers
         /// <param name="queryParameters">Parámetros de consulta para filtrar, ordenar y paginar.</param>
         /// <returns>Una respuesta paginada con la lista de productos y metadatos de paginación.</returns>
         [HttpGet]
-        [Route("")] // Corresponde a GET /api/products?filter=...&sortBy=...
+        [Route("")] 
         public async Task<IHttpActionResult> GetProducts([FromUri] ProductQueryParameters queryParameters)
         {
             if (queryParameters == null)
             {
-                // Si los parámetros son nulos, inicializamos con valores por defecto.
                 queryParameters = new ProductQueryParameters();
             }
 
@@ -44,13 +43,13 @@ namespace CatalogoDeProductosAranda.Controllers
         /// <param name="id">El ID del producto.</param>
         /// <returns>El producto encontrado o un 404 Not Found.</returns>
         [HttpGet]
-        [Route("{id:int}", Name = "GetProductById")] // Corresponde a GET /api/products/5
+        [Route("{id:int}", Name = "GetProductById")] 
         public async Task<IHttpActionResult> GetProduct(int id)
         {
             var product = await _productService.GetProductByIdAsync(id);
             if (product == null)
             {
-                return NotFound(); // Retorna un código 404
+                return NotFound(); 
             }
             return Ok(product);
         }
@@ -61,14 +60,9 @@ namespace CatalogoDeProductosAranda.Controllers
         /// <param name="productDto">El producto a crear desde el cuerpo de la petición.</param>
         /// <returns>Un 201 Created con la ubicación del nuevo recurso y el producto creado.</returns>
         [HttpPost]
-        [Route("")] // Corresponde a POST /api/products
+        [Route("")] 
         public async Task<IHttpActionResult> CreateProduct([FromBody] CreateProductDto productDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState); // Retorna un 400 con los errores de validación
-            }
-
             try
             {
                 var createdProduct = await _productService.AddProductAsync(productDto);
@@ -87,14 +81,9 @@ namespace CatalogoDeProductosAranda.Controllers
         /// <param name="productDto">Los datos actualizados del producto.</param>
         /// <returns>Un 204 No Content si fue exitoso, o 400/404 si hubo un error.</returns>
         [HttpPut]
-        [Route("{id:int}")] // Corresponde a PUT /api/products/5
+        [Route("{id:int}")] 
         public async Task<IHttpActionResult> UpdateProduct(int id, [FromBody] UpdateProductDto productDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             try
             {
                 await _productService.UpdateProductAsync(id, productDto);
@@ -106,7 +95,6 @@ namespace CatalogoDeProductosAranda.Controllers
             }
             catch (KeyNotFoundException)
             {
-                // El servicio lanza esta excepción si no encuentra el producto.
                 return NotFound();
             }
         }
@@ -117,7 +105,7 @@ namespace CatalogoDeProductosAranda.Controllers
         /// <param name="id">El ID del producto a eliminar.</param>
         /// <returns>Un 204 No Content si fue exitoso, o 404 si no se encontró.</returns>
         [HttpDelete]
-        [Route("{id:int}")] // Corresponde a DELETE /api/products/5
+        [Route("{id:int}")] 
         public async Task<IHttpActionResult> DeleteProduct(int id)
         {
             try
@@ -126,11 +114,10 @@ namespace CatalogoDeProductosAranda.Controllers
             }
             catch (KeyNotFoundException)
             {
-                // Si el producto a eliminar no existe, es idempotente, pero podemos devolver 404 para ser más informativos.
                 return NotFound();
             }
 
-            return StatusCode(HttpStatusCode.NoContent); // Retorna 204 No Content.
+            return StatusCode(HttpStatusCode.NoContent); 
         }
     }
 }

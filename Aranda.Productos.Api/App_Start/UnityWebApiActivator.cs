@@ -1,12 +1,12 @@
-using CatalogoDeProductosAranda.App_Start;
+using Aranda.Productos.Api.App_Start;
 using System.Web.Http;
 using Unity;
 using Unity.AspNet.WebApi;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CatalogoDeProductosAranda.UnityWebApiActivator), nameof(CatalogoDeProductosAranda.UnityWebApiActivator.Start))]
-[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(CatalogoDeProductosAranda.UnityWebApiActivator), nameof(CatalogoDeProductosAranda.UnityWebApiActivator.Shutdown))]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Aranda.Productos.Api.UnityWebApiActivator), nameof(Aranda.Productos.Api.UnityWebApiActivator.Start))]
+[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(Aranda.Productos.Api.UnityWebApiActivator), nameof(Aranda.Productos.Api.UnityWebApiActivator.Shutdown))]
 
-namespace CatalogoDeProductosAranda
+namespace Aranda.Productos.Api
 {
     /// <summary>
     /// Provides the bootstrapping for integrating Unity with WebApi when it is hosted in ASP.NET.
@@ -20,11 +20,12 @@ namespace CatalogoDeProductosAranda
         public static void Start() 
         {
             container = UnityConfig.RegisterComponents();
-            // Use UnityHierarchicalDependencyResolver if you want to use
-            // a new child container for each IHttpController resolution.
             var resolver = new UnityHierarchicalDependencyResolver(container);
 
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
+            
+            // Configure WebAPI with the container for validation filters
+            WebApiConfig.RegisterWithContainer(GlobalConfiguration.Configuration, container);
         }
 
         /// <summary>

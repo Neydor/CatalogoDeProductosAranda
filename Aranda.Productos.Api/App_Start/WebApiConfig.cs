@@ -1,17 +1,18 @@
-﻿using CatalogoDeProductosAranda.Handler;
+﻿using Aranda.Productos.Api.Handler;
+using FluentValidation;
+using System.ComponentModel;
+using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
-using FluentValidation;
+using Unity;
+using Aranda.Productos.Api.Filters;
 
-namespace CatalogoDeProductosAranda
+namespace Aranda.Productos.Api
 {
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-
-            // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
@@ -21,8 +22,12 @@ namespace CatalogoDeProductosAranda
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
         }
 
+        public static void RegisterWithContainer(HttpConfiguration config, IUnityContainer container)
+        {
+            // Register validation filter globally
+            config.Filters.Add(new ValidationActionFilter(container));
+        }
     }
 }

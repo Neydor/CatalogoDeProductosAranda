@@ -8,12 +8,10 @@ namespace Aranda.Productos.Application.Mappers
     {
         public MappingProfile()
         {
-            // Mapeo de Entidad a DTO
             CreateMap<Product, ProductDto>()
                 .ForMember(dest => dest.Categoria, opt => opt.MapFrom(src => src.Categoria.Nombre))
                 .ForMember(dest => dest.Imagen, opt => opt.MapFrom(src => src.BlobImagen));
 
-            // Mapeo de DTO a Entidad
             CreateMap<CreateProductDto, Product>()
                 .ForMember(dest => dest.BlobImagen, opt => opt.MapFrom(src => src.Imagen));
             CreateMap<UpdateProductDto, Product>()

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aranda.Productos.Api", "CatalogoDeProductosAranda\Aranda.Productos.Api.csproj", "{CBC65038-5184-44F5-91DF-8509CF9ACFC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aranda.Productos.Api", "Aranda.Productos.Api\Aranda.Productos.Api.csproj", "{CBC65038-5184-44F5-91DF-8509CF9ACFC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aranda.Productos.Api.Tests", "CatalogoDeProductosAranda.Tests\Aranda.Productos.Api.Tests.csproj", "{E2CBC703-486E-4186-BE31-45745ED08F83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aranda.Productos.Api.Tests", "Aranda.Productos.Api.Tests\Aranda.Productos.Api.Tests.csproj", "{E2CBC703-486E-4186-BE31-45745ED08F83}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject

@@ -7,8 +7,8 @@
     <ProjectGuid>{E2CBC703-486E-4186-BE31-45745ED08F83}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CatalogoDeProductosAranda.Tests</RootNamespace>
-    <AssemblyName>CatalogoDeProductosAranda.Tests</AssemblyName>
+    <RootNamespace>Aranda.Productos.Api.Tests</RootNamespace>
+    <AssemblyName>Aranda.Productos.Api.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,7 +63,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CatalogoDeProductosAranda\Aranda.Productos.Api.csproj">
+    <ProjectReference Include="..\Aranda.Productos.Api\Aranda.Productos.Api.csproj">
       <Project>{CBC65038-5184-44F5-91DF-8509CF9ACFC3}</Project>
       <Name>Aranda.Productos.Api</Name>
     </ProjectReference>
