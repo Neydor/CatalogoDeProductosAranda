@@ -59,7 +59,8 @@ La aplicación utiliza SQL Server LocalDB con Entity Framework Code First. La ca
 
 ### 4. Ejecutar migraciones
 
-En la **Consola del Administrador de Paquetes** de Visual Studio:
+En la **Consola del Administrador de Paquetes** de Visual Studio, seleccionamos la capa de infraestructura:
+<img width="815" height="154" alt="image" src="https://github.com/user-attachments/assets/7c5af6a1-b1c0-47f2-b0ae-a0d848197a53" />
 
 ```powershell
 Update-Database
